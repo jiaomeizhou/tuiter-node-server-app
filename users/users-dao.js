@@ -25,19 +25,19 @@ export const findUserByCredentials = (username, password) => {
 };
 
 
-export const createUser = (user) => users.push(user);
-// export const createUser = (req, res) => {
-//     const newUser = req.body;
-//     newUser._id = (new Date()).getTime() + '';
-//     users.push(newUser);
-//     res.json(newUser);
-// }
+// export const createUser = (user) => users.push(user);
+export const createUser = (user) => {
+    const newUser = user;
+    newUser._id = (new Date()).getTime() + '';
+    users.push(newUser);
+    return newUser;
+}
 
 
 export const updateUser = (uid, user) => {
     const index = users.findIndex((u) => u._id === uid);
     users[index] = { ...users[index], ...user };
-    return {status: 'ok'}
+    return users[index]
 };
 
 

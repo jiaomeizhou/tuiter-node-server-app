@@ -7,6 +7,7 @@ import session from "express-session";
 import AuthController from "./users/auth-controller.js";
 
 const app = express();
+
 app.use(
     session({
         secret: "any string",
