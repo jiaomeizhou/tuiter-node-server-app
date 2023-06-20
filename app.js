@@ -11,21 +11,6 @@ mongoose.connect("mongodb+srv://jiaomeizhou:z6BiQAGzAsIrSo1l@cluster0.1lhqt4c.mo
 
 const app = express();
 
-// app.use(
-//     session({
-//         secret: "any string",
-//         resave: false,
-//         saveUninitialized: true,
-//     })
-// );
-//
-// app.use(express.json());
-// app.use(cors({
-//         credentials: true,
-//         origin: "http://localhost:3000",
-//     })
-// );
-
 app.set("trust proxy", 1);
 app.use(
     cors({
@@ -46,6 +31,13 @@ app.use(
         },
     })
 );
+// app.use(
+//     session({
+//         secret: "any string",
+//         resave: false,
+//         saveUninitialized: true,
+//     })
+// );
 
 app.use(express.json());
 
@@ -54,5 +46,5 @@ HelloController(app)
 UserController(app)
 AuthController(app);
 
-app.listen(process.env.PORT || 4000);
-// const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
+app.listen(4000);

@@ -45,7 +45,7 @@ const AuthController = (app) => {
         res.sendStatus(200);
     };
 
-    //TODO
+
     const update = async (req, res) => {
         const userId = req.params['uid'];
         const newUser = usersDao.updateUser(userId, req.body);
