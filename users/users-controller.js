@@ -4,7 +4,7 @@ import * as usersDao from "./users-dao.js";
 let users = usersDao.findAllUsers();
 
 const UserController = (app) => {
-    app.get('/api/users', findUsers);
+    app.get('/api/users', findAllUsers);
     app.get('/api/users/:uid', findUserById);
     app.post('/api/users', createUser);
     app.delete('/api/users/:uid', deleteUser);
