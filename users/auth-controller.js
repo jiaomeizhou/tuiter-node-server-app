@@ -50,7 +50,7 @@ const AuthController = (app) => {
 
     const update = async (req, res) => {
         const userId = req.params['uid'];
-        const oldUser = await usersDao.findUserById(id);
+        const oldUser = await usersDao.findUserById(userId);
         const status = await usersDao.updateUser(userId, req.body);
         const newUser = {...oldUser, ...req.body};
         console.log(newUser);
