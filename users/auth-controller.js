@@ -21,7 +21,7 @@ const AuthController = (app) => {
             const user = await usersDao.findUserByCredentials(username, password);
             if (user) {
                 req.session['currentUser'] = user;
-                console.log("Inside login" + req.session['currentUser']);
+                // console.log("Inside login" + req.session['currentUser']);
                 res.json(user);
             } else {
                 res.sendStatus(403);
@@ -34,7 +34,7 @@ const AuthController = (app) => {
 
     const profile = async (req, res) => {
         const cUser = req.session['currentUser'];
-        console.log("Inside profile" + cUser);
+        // console.log("Inside profile" + cUser);
         if (!cUser) {
             res.sendStatus(404);
             return;
