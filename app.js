@@ -31,13 +31,6 @@ app.use(
         },
     })
 );
-// app.use(
-//     session({
-//         secret: "any string",
-//         resave: false,
-//         saveUninitialized: true,
-//     })
-// );
 
 app.use(express.json());
 
