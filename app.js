@@ -15,8 +15,8 @@ app.set("trust proxy", 1);
 app.use(
     cors({
         credentials: true,
-        // origin: "https://a6--tuiter-react-web-app-jiaomei.netlify.app",
-        origin: "http://localhost:3000",
+        origin: "https://a6--tuiter-react-web-app-jiaomei.netlify.app",
+        // origin: "http://localhost:3000",
     })
 );
 app.use(
