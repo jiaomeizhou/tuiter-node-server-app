@@ -5,23 +5,49 @@ import TuitsController from "./controllers/tuits/tuits-controller.js";
 import cors from 'cors';
 import session from "express-session";
 import AuthController from "./users/auth-controller.js";
+import mongoose from "mongoose";
+// mongoose.connect("mongodb://127.0.0.1:27017/tuiter");
+mongoose.connect("mongodb+srv://jiaomeizhou:z6BiQAGzAsIrSo1l@cluster0.1lhqt4c.mongodb.net/?retryWrites=true&w=majority");
 
 const app = express();
 
+// app.use(
+//     session({
+//         secret: "any string",
+//         resave: false,
+//         saveUninitialized: true,
+//     })
+// );
+//
+// app.use(express.json());
+// app.use(cors({
+//         credentials: true,
+//         origin: "http://localhost:3000",
+//     })
+// );
+
+app.set("trust proxy", 1);
+app.use(
+    cors({
+        credentials: true,
+        origin: "https://a6--resonant-quokka-5a61c8.netlify.app",
+        // origin: "http://localhost:3000",
+    })
+);
 app.use(
     session({
         secret: "any string",
         resave: false,
-        saveUninitialized: true,
+        proxy: true,
+        saveUninitialized: false,
+        cookie: {
+            sameSite: "none",
+            secure: true,
+        },
     })
 );
 
 app.use(express.json());
-app.use(cors({
-        credentials: true,
-        origin: "http://localhost:3000",
-    })
-);
 
 TuitsController(app);
 HelloController(app)
