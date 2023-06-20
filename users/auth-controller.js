@@ -20,7 +20,8 @@ const AuthController = (app) => {
         if (username && password) {
             const user = await usersDao.findUserByCredentials(username, password);
             if (user) {
-                req.session["currentUser"] = user;
+                req.session['currentUser'] = user;
+                console.log("Inside login" + req.session['currentUser']);
                 res.json(user);
             } else {
                 res.sendStatus(403);
@@ -32,12 +33,13 @@ const AuthController = (app) => {
 
 
     const profile = async (req, res) => {
-        const currentUser = req.session['currentUser'];
-        if (!currentUser) {
+        const cUser = req.session['currentUser'];
+        console.log("Inside profile" + cUser);
+        if (!cUser) {
             res.sendStatus(404);
             return;
         }
-        res.json(currentUser);
+        res.json(cUser);
     };
 
     const logout = async (req, res) => {
@@ -51,6 +53,7 @@ const AuthController = (app) => {
         const oldUser = await usersDao.findUserById(id);
         const status = await usersDao.updateUser(userId, req.body);
         const newUser = {...oldUser, ...req.body};
+        console.log(newUser);
 
         req.session['currentUser'] = newUser;
         res.json(status);
