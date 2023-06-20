@@ -58,7 +58,7 @@ const AuthController = (app) => {
     app.post("/api/users/login", login);
     app.post("/api/users/profile", profile);
     app.post("/api/users/logout", logout);
-    app.put("/api/users/:uid", update);
+    // app.put("/api/users/:uid", update);
 };
 export default AuthController;
 
